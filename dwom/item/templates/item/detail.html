@@ -1,0 +1,45 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Dwom | {{item.name}} {% endblock title %}
+
+
+{% block content %}
+    <div class="mt-8 px-12 flex space-x-12 py-12 bg-gray-100 rounded-xl">
+        <div class="w-3/5">
+            
+            <div>
+                <img src="{{item.image.url}}" class="rounded-t-xl" alt="{{item.name}}">
+            </div>
+            
+        </div>
+        <div class="p-6 rounded-b-xl w-2/5">
+            <h2 class="text-2xl">{{item.name}} <span><small class="text-sm float-end text-gray-500">{{item.created_at | timesince }} ago</small></span></h2>
+            <p class="text-gray-500 mt-3"><strong>Price:</strong> Ghc {{item.price}}</p> <br>
+            <p class="text-gray-500"><strong>Description</strong> <br>{{item.description}}</p> <br>
+            <p class="text-gray-500"><strong>Seller</strong> <br>{{item.created_by.username | capfirst}}</p>
+
+            <div class="mt-8">
+                <a href="" class="text-lg px-6 py-3 font-semibold bg-teal-500 rounded-xl text-white hover:bg-teal-700">Contact seller</a>
+            </div>
+        </div>
+    </div>
+    <div class="mt-6 py-12 px-6 bg-gray-100 rounded-xl">
+        <h2 class="text-center text-2xl mb-12">Related Items</h2>
+        <div class="grid grid-cols-3 gap-3">
+            {% for item in related_items %}
+                <div>
+                    <a href="{% url 'detail' item.id %}">
+                        <div>
+                            <img src="{{item.image.url}}" class="rounded-t-xl" alt="{{item.name}}">
+                        </div>
+                        <div class="p-6 bg-white rounded-b-xl">
+                            <h2 class="text-2xl">{{item.name}}</h2>
+                            <p class="text-gray-500">Price:  Ghc {{item.price}}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}
+    
