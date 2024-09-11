@@ -1,0 +1,42 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Dwom | Sign Up {% endblock title %}
+
+
+{% block content %}
+    <div class="w-1/2 p-6 bg-gray-100 rounded-xl mx-auto my-6">
+        <form action="" class="form" method="post">
+            {% csrf_token %}
+            <h2 class="mb-6 text-2xl font-semibold text-center">Sign Up</h2>
+            
+
+            <div>
+                
+                {% for field in form %}
+                    <div class="my-5">
+                        {{field.label}} <br>
+                        {{field}}
+                    </div>
+                {% endfor %}
+
+                
+                {% if form.errors %}
+                <div class="bg-red-200 p-3 rounded-xl">
+                    {{form.errors}}
+                    
+                </div>
+                    
+                {% endif %}
+                    
+                    
+            </div>
+            <div class="mt-6">
+                <button class="text-white mx-auto font-semibold text-base py-2 px-4 bg-teal-500 rounded-lg hover:bg-teal-700">
+                    Sign up
+                </button>
+            </div>
+
+        </form>
+    </div>
+{% endblock content %}
+    
