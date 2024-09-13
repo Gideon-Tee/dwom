@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Dwom | Upload {% endblock title %}
+
+{% block content %}
+
+    <div class="mt-6 py-8 px-6 bg-gray-100 rounded-xl w-1/2 mx-auto">
+        <h1 class="text-3xl text-teal-700 font-semibold text-center">Upload New Item</h1>
+        <form action="" class="w-full" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            {% for field in form %}
+                    <div class="my-5">
+                        {{field.label}} <br>
+                        {{field}}
+                    </div>
+                {% endfor %}
+
+            {% if form.errors %}
+                <div class="bg-red-200 my-4 p-3 rounded-xl">
+                    {{form.errors}}
+                    
+                </div>
+                    
+            {% endif %}
+            <div class="my-6 w-2/3 mx-auto">
+                <button class="text-white text-base w-full py-3 rounded-xl px-3 bg-teal-500 hover:bg-teal-700" type="submit">Upload</button>
+            </div>
+        </form>
+    </div>
+
+{% endblock content %}

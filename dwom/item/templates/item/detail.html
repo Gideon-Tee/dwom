@@ -19,7 +19,16 @@
             <p class="text-gray-500"><strong>Seller</strong> <br>{{item.created_by.username | capfirst}}</p>
 
             <div class="mt-8">
+                
+                {% if request.user == item.created_by %}
+                <a href="{% url 'edit_item' item.id %}" class="text-lg px-6 py-3 font-semibold bg-teal-500 rounded-xl text-white hover:bg-teal-700">Edit</a>
+                <a href="{% url 'delete_item' item.id %}" class="text-lg px-6 py-3 font-semibold bg-red-500 rounded-xl text-white hover:bg-red-700">Delete</a>
+
+                {% else %}
                 <a href="" class="text-lg px-6 py-3 font-semibold bg-teal-500 rounded-xl text-white hover:bg-teal-700">Contact seller</a>
+                    
+                {% endif %}
+                    
             </div>
         </div>
     </div>

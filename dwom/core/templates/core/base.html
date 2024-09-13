@@ -8,18 +8,20 @@
 </head>
 <body>
     <nav class="px-6 py-6 flex justify-between items-center border-b border-gray-200">
-        <a href="/" class="text-xl font-semibold">Dwom</a>
+        <a href="/" class="text-2xl font-semibold text-teal-900">Dwom</a>
         <div class="space-x-6">
-            <a href="#" class="text-lg font-semibold hover:text-gray-500">New Item</a>
-            <a href="#" class="text-lg font-semibold hover:text-gray-500">Browse</a>
+            <a href="{% url 'create_item' %}" class="text-lg font-semibold hover:text-gray-500">New Item</a>
+            <a href="{% url 'browse' %}" class="text-lg font-semibold hover:text-gray-500">Browse</a>
 
             
             {% if request.user.is_authenticated %}
-                <a href="" class="px-6 py-3 text-base text-white font-bold bg-teal-600 hover:bg-teal-800 hover:text-gray-200 rounded-xl">{{user.username | capfirst}}</a>
+            <a href="" class="px-6 py-3 text-base font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Inbox</a>
+            <a href="{% url 'dashboard' %}" class="px-6 py-3 text-base font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">Dashboard</a>
+            <a href="" class="px-6 py-3 text-base text-teal-800 font-bold hover:text-teal-950 rounded-xl">{{user.username | capfirst}}</a>
             
             {% else %}
                 <a href="{% url 'signup' %}" class="px-6 py-3 text-base font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Sign up</a>
-                <a href="#" class="px-6 py-3 text-base font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">Log in</a>
+                <a href="{% url 'login' %}" class="px-6 py-3 text-base font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">Log in</a>
             {% endif %}
         </div>
     </nav>
